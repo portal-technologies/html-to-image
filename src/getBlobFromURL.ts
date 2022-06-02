@@ -47,14 +47,13 @@ export function getBlobFromURL(
       }
     }
 
-    let msg = `Failed to fetch resource: ${url}`
+    const msg = `Failed to fetch resource: ${url}`
+    let failedReason = ''
     if (reason) {
-      msg = typeof reason === 'string' ? reason : reason.message
+      failedReason = typeof reason === 'string' ? reason : reason.message
     }
 
-    if (msg) {
-      console.error(msg)
-    }
+    console.error(msg, failedReason)
 
     return {
       blob: placeholder,
